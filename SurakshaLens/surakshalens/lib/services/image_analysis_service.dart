@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class ImageAnalysisService {
   static const String baseUrl =
-      'http://localhost:5000';
+      'https://suraksha-lens-ai-financial-scam-claim-verifier-gkl9mxmzf.vercel.app';
 
   static Future<Map<String, dynamic>>
       analyzeImage(
