@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+package-lock.json.bak
+
+# Flutter/Dart
+.dart_tool/
+.packages
+.pub-cache/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Environment / secrets
+.env
+
+# Uploads & temp
+Backend/uploads/
+*.log
+
+# Android
+android/.gradle/
+android/local.properties
+*.keystore
+*.jks
+
+# iOS/macOS/desktop build artifacts
+ios/Flutter/Generated.xcconfig
+ios/Pods/
+macos/Flutter/Generated.xcconfig
+windows/flutter/ephemeral/
+linux/flutter/ephemeral/
+
+# Tesseract cache
+eng.traineddata
