@@ -27,6 +27,10 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/analyze", analysisRoutes);
 
-app.listen(PORT, () => {
-  console.log(`SurakshaLens server running on port ${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`SurakshaLens server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;

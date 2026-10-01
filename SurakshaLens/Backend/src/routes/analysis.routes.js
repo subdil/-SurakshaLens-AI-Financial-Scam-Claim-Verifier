@@ -12,7 +12,7 @@ const {
 const router = express.Router();
 
 const upload = multer({
-  dest: "uploads/"
+  dest: process.env.VERCEL ? "/tmp/uploads" : "uploads/"
 });
 
 router.post("/text", analyzeText);
