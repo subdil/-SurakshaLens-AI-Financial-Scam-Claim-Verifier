@@ -5,7 +5,10 @@ let workerPromise = null;
 
 async function getWorker() {
   if (!workerPromise) {
-    workerPromise = createWorker("eng");
+    const path = require("path");
+    workerPromise = createWorker("eng", 1, {
+      langPath: path.join(__dirname, "..", "..")
+    });
     workerPromise.catch(() => {
       workerPromise = null;
     });
@@ -15,7 +18,8 @@ async function getWorker() {
 
 async function extractTextFromImage(imagePath) {
   // resize big screenshots to max 1400px so OCR is fast
-  const image = await Jimp.read(imagePath);
+  const fs = require("fs");
+  const image = await Jimp.read(fs.readFileSync(imagePath));
   if (image.bitmap.width > 1400 || image.bitmap.height > 1400) {
     image.scaleToFit({ w: 1400, h: 1400 });
   }
