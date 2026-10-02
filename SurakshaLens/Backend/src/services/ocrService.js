@@ -1,15 +1,30 @@
+const { Jimp, JimpMime } = require("jimp");
 const { createWorker } = require("tesseract.js");
 
-async function extractTextFromImage(imagePath) {
-  const worker = await createWorker("eng");
+let workerPromise = null;
 
-  try {
-    const result = await worker.recognize(imagePath);
-
-    return result.data.text;
-  } finally {
-    await worker.terminate();
+async function getWorker() {
+  if (!workerPromise) {
+    workerPromise = createWorker("eng");
+    workerPromise.catch(() => {
+      workerPromise = null;
+    });
   }
+  return workerPromise;
+}
+
+async function extractTextFromImage(imagePath) {
+  // resize big screenshots to max 1400px so OCR is fast
+  const image = await Jimp.read(imagePath);
+  if (image.bitmap.width > 1400 || image.bitmap.height > 1400) {
+    image.scaleToFit({ w: 1400, h: 1400 });
+  }
+  const buffer = await image.getBuffer(JimpMime.png);
+
+  const worker = await getWorker();
+  const result = await worker.recognize(buffer);
+
+  return result.data.text;
 }
 
 module.exports = {
