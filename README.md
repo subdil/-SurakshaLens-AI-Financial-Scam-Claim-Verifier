@@ -9,6 +9,8 @@
 - 🌐 **Live Web App:** https://surakshalens.vercel.app/
 - ⚙️ **Backend API:** https://suraksha-lens-ai-financial-scam-claim-verifier-gkl9mxmzf.vercel.app/api/health
 - 📱 **Android APK:** https://github.com/subdil/-SurakshaLens-AI-Financial-Scam-Claim-Verifier/releases/download/v1.0.0/app-release.apk
+- 📊 **Presentation:** [SurakshaLens_Presentation.pptx](SurakshaLens_Presentation.pptx)
+- 🎬 **Demo Video:** <!-- PASTE_GOOGLE_DRIVE_VIDEO_LINK_HERE --> (paste your Google Drive video link here)
 
 ## ❓ Problem
 
@@ -80,7 +82,7 @@ SurakshaLens/
 
 ## 👥 Team
 
-Solo developer — ** subdil goyal**
+**DevLab** — Team Lead: subdil goyal
 
 ## 📜 License
 

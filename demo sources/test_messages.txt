@@ -1,0 +1,38 @@
+===== TEST 1 (Scam - use for demo) =====
+Message:
+urgent pay 10000 to get 10x profit in 7 days, join now
+
+Expected: High concern, money request, unrealistic profit, urgency indicators
+
+===== TEST 2 (Crypto scam) =====
+Message:
+SEBI approved crypto investment! Guaranteed 300% returns.
+Join Telegram: https://t.me/crypto_vip
+Pay via UPI: investexpert@upi
+
+Expected: High concern, Telegram link + UPI ID detected
+
+===== TEST 3 (Job scam) =====
+Message:
+Work from home job, earn 50000/month. Pay 2000 registration fee.
+Call: 9876543210
+
+Expected: Medium/High concern, phone number, registration fee
+
+===== TEST 4 (Safe message - shows app isn't always "High") =====
+Message:
+Hi Rahul, your appointment is confirmed for tomorrow at 5pm. See you!
+
+Expected: Low concern
+
+===== TEST 5 (KYC phishing) =====
+Message:
+Dear customer, your bank account will be blocked today.
+Verify KYC now: http://bit.ly/kyc-update-fast
+
+Expected: High concern, suspicious link
+
+===== HOW TO USE =====
+- Type/paste any message above in the Paste screen -> Analyze
+- Or upload its screenshot in the Shot screen (OCR)
+- Or play test_voice_input.wav near your phone mic while voice input is on
