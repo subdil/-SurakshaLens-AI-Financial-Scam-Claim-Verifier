@@ -41,6 +41,17 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script>
+    function ocrImageBase64(b64) {
+      return Tesseract.recognize(
+        'data:image/png;base64,' + b64,
+        'eng'
+      ).then(function(result) {
+        return result.data.text;
+      });
+    }
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

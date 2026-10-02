@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../util/strings.dart';
-import '../../services/image_analysis_service.dart';
 import '../result/result_screen.dart';
+import '../../services/api_service.dart';
+import '../../util/ocr_platform.dart';
 
 class ScreenshotScreen extends StatefulWidget {
   const ScreenshotScreen({
@@ -32,6 +33,9 @@ class _ScreenshotScreenState
       final XFile? image =
           await _picker.pickImage(
         source: ImageSource.gallery,
+        maxWidth: 1200,
+        maxHeight: 1200,
+        imageQuality: 80,
       );
 
       if (image == null) {
@@ -69,12 +73,15 @@ class _ScreenshotScreenState
     });
 
     try {
+      final extractedText =
+          await OcrPlatform.extractText(_imageBytes!);
+
+      if (extractedText.trim().isEmpty) {
+        throw Exception('No text could be read from the image.');
+      }
+
       final result =
-          await ImageAnalysisService
-              .analyzeImage(
-        _imageBytes!,
-        _fileName!,
-      );
+          await ApiService.analyzeText(extractedText);
 
       if (!mounted) return;
 
